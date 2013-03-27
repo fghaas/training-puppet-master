@@ -8,6 +8,21 @@ class vagrant-base {
   class { "ntp": }
 }
 
+class ceph-base {
+  apt::source { "ceph-bobtail":
+      location          => "http://ceph.com/debian-bobtail",
+      release           => "squeeze",
+      repos             => "main",
+      key               => "17ED316D",
+      key_server        => "pgp.mit.edu",
+      include_src       => false
+  }
+  package { "ceph":
+    ensure => "installed",
+    subscribe  => File['/etc/apt/sources.list.d/ceph-bobtail.list'],
+  }
+}
+
 class ceph-osd-base {
   package { "xfsprogs": ensure => "installed" }
 }

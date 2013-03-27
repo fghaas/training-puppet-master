@@ -5,5 +5,6 @@ node basenode {
 }
 
 node daisy inherits basenode {
+  class { "ceph": }
   class { "ceph-osd": }
 }
