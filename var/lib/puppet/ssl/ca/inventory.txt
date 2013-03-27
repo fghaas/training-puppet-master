@@ -1,0 +1,5 @@
+# Inventory of signed certificates
+# SERIAL NOT_BEFORE NOT_AFTER SUBJECT
+0x0001 2013-03-25T14:22:51GMT 2018-03-25T14:22:51GMT /CN=Puppet CA: training-puppet-master.tlad.tritonlimited.com
+0x0002 2013-03-25T14:28:20GMT 2018-03-25T14:28:20GMT /CN=training-puppet-master
+0x0003 2013-03-25T14:52:36GMT 2018-03-25T14:52:36GMT /CN=daisy
