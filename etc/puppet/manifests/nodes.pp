@@ -1,8 +1,9 @@
 # /etc/puppet/manifests/nodes.pp
 
 node basenode {
-  include ntp
+  class { "vagrant": }
 }
 
 node daisy inherits basenode {
+  class { "ceph-osd": }
 }
