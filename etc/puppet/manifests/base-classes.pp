@@ -8,7 +8,7 @@ class vagrant-base {
   class { "ntp": }
 }
 
-class ceph-base {
+class ceph-repo-base {
   apt::source { "ceph-bobtail":
       location          => "http://ceph.com/debian-bobtail",
       release           => "squeeze",
@@ -17,10 +17,30 @@ class ceph-base {
       key_server        => "pgp.mit.edu",
       include_src       => false
   }
+
+  apt::source { "debian-non-free":
+      location          => "http://http.us.debian.org/debian",
+      release           => "squeeze",
+      repos             => "non-free",
+      include_src       => false
+  }
+}
+
+class ceph-base {
   package { "ceph":
     ensure => "installed",
-    subscribe  => File['/etc/apt/sources.list.d/ceph-bobtail.list'],
+    require  => Class['ceph-repo-base'],
   }
+  package { "radosgw":
+    ensure => "installed",
+    require  => Class['ceph-repo-base'],
+  }
+
+  package { "libapache2-mod-fastcgi":
+    ensure => "installed",
+    require  => Class['ceph-repo-base'],
+  }
+
 }
 
 class ceph-osd-base {
