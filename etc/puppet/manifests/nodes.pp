@@ -1,23 +1,19 @@
 # /etc/puppet/manifests/nodes.pp
 
-node basenode {
-  class { "vagrant": }
-}
-
-node daisy inherits basenode {
-  class { "ceph-repo": }
+node daisy {
   class { "ceph": }
+  class { "ceph-packages": }
   class { "ceph-osd": }
 }
 
-node eric inherits basenode {
-  class { "ceph-repo": }
+node eric {
   class { "ceph": }
+  class { "ceph-packages": }
   class { "ceph-osd": }
 }
 
-node frank inherits basenode {
-  class { "ceph-repo": }
+node frank {
   class { "ceph": }
+  class { "ceph-packages": }
   class { "ceph-osd": }
 }
