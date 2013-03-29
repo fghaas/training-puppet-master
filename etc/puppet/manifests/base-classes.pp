@@ -10,7 +10,6 @@ class ceph-base {
       location          => "http://http.us.debian.org/debian",
       release           => "squeeze",
       repos             => "main",
-      required_packages => "debian-keyring debian-archive-keyring",
       key               => "55BE302B",
       key_server        => "pgp.mit.edu",
       include_src       => false
@@ -20,7 +19,6 @@ class ceph-base {
       location          => "http://http.us.debian.org/debian",
       release           => "squeeze-updates",
       repos             => "main",
-      required_packages => "debian-keyring debian-archive-keyring",
       include_src       => false
   }
 
@@ -28,7 +26,6 @@ class ceph-base {
       location          => "http://security.debian.org/",
       release           => "squeeze/updates",
       repos             => "main",
-      required_packages => "debian-keyring debian-archive-keyring",
       include_src       => false
   }
 
@@ -36,7 +33,6 @@ class ceph-base {
       location          => "http://http.us.debian.org/debian",
       release           => "squeeze",
       repos             => "non-free",
-      required_packages => "debian-keyring debian-archive-keyring",
       include_src       => false,
   }
 
