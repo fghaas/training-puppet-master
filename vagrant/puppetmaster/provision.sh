@@ -70,3 +70,5 @@ for m in \
   hastexo-location; do
   puppet module install --module_repository http://forge.puppetlabs.com $m
 done
+
+puppet apply /etc/puppet/manifests/site.pp
