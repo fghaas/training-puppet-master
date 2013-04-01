@@ -9,7 +9,7 @@ RailsAutoDetect On
 Listen 3000
 
 <VirtualHost *:3000>
-  ServerName puppetmaster
+  ServerName training-puppet-master
   ServerAlias localhost
   RailsBaseURI /
   DocumentRoot /usr/share/puppet-dashboard/public/
