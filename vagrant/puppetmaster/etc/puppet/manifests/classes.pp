@@ -47,12 +47,15 @@ class passenger {
 class apache2 {
   class { "apache2-base": }
 }
+
 class ceph {
-  class { "ceph-base": }
+  class { "ceph-base":
+    release => $::ceph_release,
+  }
 }
 
-class ceph-packages {
-  class { "ceph-packages-base": }
+class radosgw {
+  class { "radosgw-base": }
 }
 
 class ceph-osd {
