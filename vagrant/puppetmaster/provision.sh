@@ -18,10 +18,6 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
 
-wget http://apt.puppetlabs.com/puppetlabs-release-squeeze.deb
-dpkg -i puppetlabs-release-squeeze.deb
-apt-get update
-
 apt-get -y install squid3
 
 cat > /etc/squid3/squid.conf <<EOF
@@ -46,6 +42,10 @@ cat > /etc/apt/apt.conf.d/60proxy <<EOF
 # Set by $0
 Acquire::http::Proxy "$PROXY";
 EOF
+
+wget http://apt.puppetlabs.com/puppetlabs-release-squeeze.deb
+dpkg -i puppetlabs-release-squeeze.deb
+apt-get update
 
 apt-get -y install puppetmaster-passenger
 
