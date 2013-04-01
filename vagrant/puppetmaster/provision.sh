@@ -63,3 +63,10 @@ cp -av /vagrant/var/lib/puppet /var/lib
 cp -av /vagrant/etc/puppet /etc
 
 chown -Rv puppet:puppet /var/lib/puppet /etc/puppet
+
+for m in \
+  puppetlabs-apt \
+  puppetlabs-mysql puppetlabs-ntp \
+  hastexo-location; do
+  puppet module install --module_repository http://forge.puppetlabs.com $m
+done
