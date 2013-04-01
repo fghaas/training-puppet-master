@@ -1,5 +1,8 @@
+# defaults.pp: local defaults
+import "defaults.pp"
+
 # defines.pp: locally defined types
-#import "defines.pp"
+import "defines.pp"
 
 # base-classes.pp: classes, possibly parameterized
 import "base-classes.pp"
