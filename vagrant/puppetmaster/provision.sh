@@ -22,10 +22,16 @@ apt-get -y install squid3
 
 cat > /etc/squid3/squid.conf <<EOF
 http_port 3128
-acl everything src 0.0.0.0/0
-http_access allow everything
+http_access allow all
 maximum_object_size 1024 MB
 cache_replacement_policy heap LFUDA
+refresh_pattern ^ftp:          1440    20%     10080
+refresh_pattern ^gopher:       1440    0%      1440
+refresh_pattern Packages\.bz2$ 0       20%     4320 refresh-ims
+refresh_pattern Sources\.bz2$  0       20%     4320 refresh-ims
+refresh_pattern Release\.gpg$  0       20%     4320 refresh-ims
+refresh_pattern Release$       0       20%     4320 refresh-ims
+refresh_pattern .              1440    20%     10080 override-expire override-lastmod reload-into-ims ignore-reload ignore-no-stor
 EOF
 
 PROXY="http://localhost:3128"
