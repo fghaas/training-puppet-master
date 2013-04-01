@@ -49,4 +49,7 @@ EOF
 
 apt-get -y install puppetmaster-passenger
 
-cp -a /vagrant/puppet /etc/
+cp -av /vagrant/var/lib/puppet /var/lib
+cp -av /vagrant/etc/puppet /etc
+
+chmod -Rv puppet:puppet /var/lib/puppet /etc/puppet
