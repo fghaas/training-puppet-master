@@ -62,4 +62,4 @@ apt-get -y install puppetmaster-passenger
 cp -av /vagrant/var/lib/puppet /var/lib
 cp -av /vagrant/etc/puppet /etc
 
-chmod -Rv puppet:puppet /var/lib/puppet /etc/puppet
+chown -Rv puppet:puppet /var/lib/puppet /etc/puppet
