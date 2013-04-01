@@ -1,19 +1,13 @@
-# /etc/puppet/manifests/nodes.pp
-
-node daisy {
-  class { "ceph": }
-  class { "ceph-packages": }
-  class { "ceph-osd": }
+node training-puppet-master { 
+  class { "base": }
+  class { "apache2": }
+  class { "passenger": }
+  class { "puppetmaster": }
+  class { "puppet-dashboard": }
 }
 
-node eric {
-  class { "ceph": }
-  class { "ceph-packages": }
-  class { "ceph-osd": }
-}
 
-node frank {
-  class { "ceph": }
-  class { "ceph-packages": }
-  class { "ceph-osd": }
+node default {
+  class { "base": }
+  class { "puppet-agent": }
 }
