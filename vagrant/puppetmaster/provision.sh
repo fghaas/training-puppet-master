@@ -29,18 +29,28 @@ cache_replacement_policy heap LFUDA
 EOF
 
 PROXY="http://localhost:3128"
+export http_proxy=$PROXY
+export ftp_proxy=$PROXY
+export http_proxy=$PROXY
 
 cat >> /etc/environment <<EOF
 
 # added by $0
-http_proxy="$PROXY"
-ftp_proxy="$PROXY"
-https_proxy="$PROXY"
+http_proxy="$http_proxy"
+ftp_proxy="$ftp_proxy"
+https_proxy="$https_proxy"
 EOF
 
 cat > /etc/apt/apt.conf.d/60proxy <<EOF
 # Set by $0
-Acquire::http::Proxy "$PROXY";
+Acquire {
+  http {
+    Proxy "$http_proxy";
+    No-Cache "false";
+    Max-Age "604800";     // 1 week age on index files
+    No-Store "false";    // Don't Prevent the cache from storing archives
+  };
+};
 EOF
 
 wget http://apt.puppetlabs.com/puppetlabs-release-squeeze.deb
